@@ -79,12 +79,15 @@
           if (s.currentTop !== newTop) {
             var newWidth;
             if (s.getWidthFrom) {
-                newWidth = $(s.getWidthFrom).width() || null;
+              newWidth = $(s.getWidthFrom).width() || null;
             } else if (s.widthFromWrapper) {
-                newWidth = s.stickyWrapper.width();
+              newWidth = s.stickyWrapper.width();
             }
             if (newWidth == null) {
-                newWidth = s.stickyElement.width();
+              newWidth = s.stickyElement.width();
+            }
+            if (!newWidth) {
+              newWidth = $window.width();
             }
             s.stickyElement
               .css('width', newWidth)
@@ -142,15 +145,16 @@
           return;
         }
         if (s.getWidthFrom) {
-            if (s.responsiveWidth) {
-                newWidth = $(s.getWidthFrom).width();
-            }
+          if (s.responsiveWidth) {
+            newWidth = $(s.getWidthFrom).width();
+          }
         } else if(s.widthFromWrapper) {
-            newWidth = s.stickyWrapper.width();
+          newWidth = s.stickyWrapper.width();
         }
-        if (newWidth != null) {
-            s.stickyElement.css('width', newWidth);
+        if (!newWidth) {
+          newWidth = $window.width();
         }
+        s.stickyElement.css('width', newWidth);
       }
     },
     methods = {
