@@ -120,11 +120,11 @@
           var unstick = (s.stickyElement.offset().top + s.stickyElement.outerHeight() >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight()) && (s.stickyElement.offset().top <= s.topSpacing);
 
           if( unstick ) {
-            s.stickyElement
+            /*s.stickyElement
               .css('position', 'absolute')
               .css('top', '')
               .css('bottom', 0)
-              .css('z-index', '');
+              .css('z-index', '');*/
           } else {
             s.stickyElement
               .css('position', 'fixed')
